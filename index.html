@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Climb.gg — Piloting Services</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 25px;
+      background: #111;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 30px;
+    }
+    .game-card {
+      background: #1f1f1f;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.25s;
+      border: 1px solid #333;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .game-card:hover {
+      transform: scale(1.05);
+      background: #2b2b2b;
+      border-color: #4caf50;
+    }
+    .game-logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+    }
+    .hidden { display: none; }
+
+    .panel {
+      padding: 30px;
+      animation: fade 0.3s ease-in-out;
+    }
+    @keyframes fade { from{opacity:0;} to{opacity:1;} }
+
+    select, input, button {
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    select, input {
+      width: 250px;
+      background: #2a2a2a;
+      color: white;
+    }
+
+    button {
+      cursor: pointer;
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #45a049;
+    }
+
+    .price-box {
+      background: #161616;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      width: 300px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>Climb.gg<br><span style="font-size:14px;font-weight:400;opacity:0.8;">Fast • Secure • Trusted Piloting Services</span></header>
+
+  <div class="games" id="gameList">
+    <div class="game-card" onclick="openPanel('ml')">
+      <img src="https://i.imgur.com/0ZfYh8Q.png" class="game-logo">
+      <div>Mobile Legends</div>
+    </div>
+
+    <div class="game-card" onclick="openPanel('valo')">
+      <img src="https://i.imgur.com/qG4E7P4.png" class="game-logo">
+      <div>Valorant</div>
+    </div>
+
+    <div class="game-card" onclick="openPanel('roblox')">
+      <img src="https://i.imgur.com/qPbUlCZ.png" class="game-logo">
+      <div>Roblox</div>
+    </div>
+
+    <div class="game-card" onclick="openPanel('genshin')">
+      <img src="https://i.imgur.com/0yH6jKm.png" class="game-logo">
+      <div>Genshin Impact</div>
+    </div>
+  </div>
+
+  <!-- ML Panel -->
+  <div class="panel hidden" id="ml">
+    <h2>Mobile Legends Piloting</h2>
+    <label>Select Rank:</label><br>
+    <select id="mlRank" onchange="updatePrice('ml')">
+      <option value="100">Warrior</option>
+      <option value="150">Elite</option>
+      <option value="200">Master</option>
+      <option value="250">Grandmaster</option>
+      <option value="300">Epic</option>
+      <option value="350">Legend</option>
+      <option value="450">Mythic</option>
+      <option value="600">Mythical Glory</option>
+    </select>
+
+    <div class="price-box" id="mlPrice">Price: ₱100</div>
+
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <!-- Valorant Panel -->
+  <div class="panel hidden" id="valo">
+    <h2>Valorant Piloting</h2>
+    <label>Select Rank:</label><br>
+    <select id="valoRank" onchange="updatePrice('valo')">
+      <option value="120">Iron</option>
+      <option value="180">Bronze</option>
+      <option value="250">Silver</option>
+      <option value="320">Gold</option>
+      <option value="400">Platinum</option>
+      <option value="500">Diamond</option>
+      <option value="650">Ascendant</option>
+      <option value="800">Immortal</option>
+      <option value="1200">Radiant</option>
+    </select>
+
+    <div class="price-box" id="valoPrice">Price: ₱120</div>
+
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <!-- Roblox Panel -->
+  <div class="panel hidden" id="roblox">
+    <h2>Roblox Piloting</h2>
+    <p>Enter the game/level you want boosted:</p>
+    <input placeholder="Ex: Blox Fruits - LVL 1000" />
+
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <!-- Genshin Panel -->
+  <div class="panel hidden" id="genshin">
+    <h2>Genshin Impact Piloting</h2>
+    <label>Select Service:</label>
+    <select id="genshinRank" onchange="updatePrice('genshin')">
+      <option value="150">Abyss Boosting</option>
+      <option value="120">Quest Clearing</option>
+      <option value="180">AR Leveling</option>
+    </select>
+
+    <div class="price-box" id="genshinPrice">Price: ₱150</div>
+
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    function openPanel(id) {
+      document.getElementById('gameList').classList.add('hidden');
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function goBack() {
+      document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById('gameList').classList.remove('hidden');
+    }
+
+    function updatePrice(game) {
+      const rankValue = document.getElementById(game + 'Rank').value;
+      const priceBox = document.getElementById(game + 'Price');
+      priceBox.innerHTML = `Price: ₱${rankValue}`;
+    }
+  </script>
+</body>
+</html>
