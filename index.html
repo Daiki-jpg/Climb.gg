@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Climb.gg — Piloting Services</title>
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -12,6 +13,7 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       padding: 25px;
       background: #111;
@@ -21,40 +23,60 @@
       letter-spacing: 1px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
+
     .games {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
       padding: 30px;
     }
+
+    /* === GAME CARD STYLES + ANIMATION === */
     .game-card {
       background: #1f1f1f;
       padding: 25px;
       border-radius: 15px;
       text-align: center;
       cursor: pointer;
-      transition: 0.25s;
       border: 1px solid #333;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: 0.25s;
+      animation: pulse 3s infinite;
     }
+
     .game-card:hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
       background: #2b2b2b;
       border-color: #4caf50;
+      box-shadow: 0 0 15px #4caf50, 0 0 30px rgba(76,175,80,0.5);
     }
+
+    .game-card.selected {
+      border-color: #4caf50;
+      box-shadow: 0 0 20px #4caf50, 0 0 40px rgba(76,175,80,0.6);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
     .game-logo {
       width: 80px;
       height: 80px;
       margin-bottom: 10px;
       border-radius: 12px;
     }
+
     .hidden { display: none; }
 
     .panel {
       padding: 30px;
       animation: fade 0.3s ease-in-out;
     }
-    @keyframes fade { from{opacity:0;} to{opacity:1;} }
+
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
     select, input, button {
       padding: 12px;
@@ -78,6 +100,7 @@
       transition: 0.2s;
       width: 220px;
     }
+
     button:hover {
       background: #45a049;
     }
@@ -90,9 +113,9 @@
       border: 1px solid #333;
       width: 300px;
     }
-
   </style>
 </head>
+
 <body>
 
 <header>
@@ -100,29 +123,32 @@
   <span style="font-size:14px;font-weight:400;opacity:0.8;">Fast • Secure • Trusted Piloting Services</span>
 </header>
 
+<!-- GAME LIST -->
 <div class="games" id="gameList">
-  <div class="game-card" onclick="openPanel('ml')">
+
+  <div class="game-card" onclick="openPanel('ml', this)">
     <img src="https://i.imgur.com/0ZfYh8Q.png" class="game-logo">
     <div>Mobile Legends</div>
   </div>
 
-  <div class="game-card" onclick="openPanel('valo')">
+  <div class="game-card" onclick="openPanel('valo', this)">
     <img src="https://i.imgur.com/qG4E7P4.png" class="game-logo">
     <div>Valorant</div>
   </div>
 
-  <div class="game-card" onclick="openPanel('roblox')">
+  <div class="game-card" onclick="openPanel('roblox', this)">
     <img src="https://i.imgur.com/qPbUlCZ.png" class="game-logo">
     <div>Roblox</div>
   </div>
 
-  <div class="game-card" onclick="openPanel('genshin')">
+  <div class="game-card" onclick="openPanel('genshin', this)">
     <img src="https://i.imgur.com/0yH6jKm.png" class="game-logo">
     <div>Genshin Impact</div>
   </div>
+
 </div>
 
-<!-- ML Panel -->
+<!-- MOBILE LEGENDS PANEL -->
 <div class="panel hidden" id="ml">
   <h2>Mobile Legends Piloting</h2>
   <label>Select Rank:</label><br>
@@ -143,7 +169,7 @@
   <button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Valorant Panel -->
+<!-- VALORANT PANEL -->
 <div class="panel hidden" id="valo">
   <h2>Valorant Piloting</h2>
   <label>Select Rank:</label><br>
@@ -165,17 +191,17 @@
   <button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Roblox Panel -->
+<!-- ROBLOX PANEL -->
 <div class="panel hidden" id="roblox">
   <h2>Roblox Piloting</h2>
   <p>Enter the game/level you want boosted:</p>
-  <input placeholder="Ex: Blox Fruits - LVL 1000" /><br>
+  <input placeholder="Ex: Blox Fruits - LVL 1000"><br>
 
   <button onclick="proceed()">Proceed</button><br>
   <button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Genshin Panel -->
+<!-- GENSHIN PANEL -->
 <div class="panel hidden" id="genshin">
   <h2>Genshin Impact Piloting</h2>
   <label>Select Service:</label><br>
@@ -191,27 +217,34 @@
   <button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Socials Panel -->
+<!-- SOCIALS PANEL -->
 <div class="panel hidden" id="socials">
   <h2>Contact Climb.gg to Proceed</h2>
   <p>Message us on any of our socials below to continue your order:</p>
 
-  <a href="https://www.facebook.com/JazpherDave" target="_blank">
+  <a href="https://facebook.com/YOURPAGE" target="_blank">
     <button>Facebook</button>
   </a><br>
 
-  <a href="https://www.tiktok.com/@imdaikuku" target="_blank">
-    <button>TikTok</button>
+  <a href="https://discord.gg/YOURSERVER" target="_blank">
+    <button>Discord</button>
   </a><br>
 
-  <a href="https://www.instagram.com/_daikicantaim/" target="_blank">
+  <a href="https://instagram.com/YOURPAGE" target="_blank">
     <button>Instagram</button>
   </a><br><br>
-  <button onclick="returnToOffers()" style="background:#333;">⬅ Return </button>
+
+  <button onclick="returnToOffers()" style="background:#333;">⬅ Return to Offers</button>
 </div>
 
 <script>
-  function openPanel(id) {
+  function openPanel(id, element) {
+    document.querySelectorAll('.game-card').forEach(card => {
+      card.classList.remove('selected');
+    });
+
+    element.classList.add('selected');
+
     document.getElementById('gameList').classList.add('hidden');
     document.getElementById(id).classList.remove('hidden');
   }
@@ -231,11 +264,11 @@
     localStorage.setItem("showSocials", "yes");
     location.reload();
   }
-  
+
   function returnToOffers() {
-  document.getElementById('socials').classList.add('hidden');
-  document.getElementById('gameList').classList.remove('hidden');
-}
+    document.getElementById('socials').classList.add('hidden');
+    document.getElementById('gameList').classList.remove('hidden');
+  }
 
   window.onload = function() {
     if (localStorage.getItem("showSocials") === "yes") {
