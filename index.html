@@ -231,6 +231,11 @@
     localStorage.setItem("showSocials", "yes");
     location.reload();
   }
+  
+  function returnToOffers() {
+  document.getElementById('socials').classList.add('hidden');
+  document.getElementById('gameList').classList.remove('hidden');
+}
 
   window.onload = function() {
     if (localStorage.getItem("showSocials") === "yes") {
