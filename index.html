@@ -28,20 +28,38 @@
       padding: 30px;
     }
     .game-card {
-      background: #1f1f1f;
-      padding: 25px;
-      border-radius: 15px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.25s;
-      border: 1px solid #333;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    }
-    .game-card:hover {
-      transform: scale(1.05);
-      background: #2b2b2b;
-      border-color: #4caf50;
-    }
+  background: #1f1f1f;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+  border: 1px solid #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  animation: pulse 3s infinite;
+}
+
+.game-card:hover {
+  transform: scale(1.07);
+  background: #2b2b2b;
+  border-color: #4caf50;
+  box-shadow: 0 0 15px #4caf50, 0 0 30px rgba(76,175,80,0.5);
+}
+
+/* Selected card */
+.game-card.selected {
+  border-color: #4caf50;
+  box-shadow: 0 0 20px #4caf50, 0 0 40px rgba(76,175,80,0.6);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
     .game-logo {
       width: 80px;
       height: 80px;
@@ -101,22 +119,23 @@
 </header>
 
 <div class="games" id="gameList">
-  <div class="game-card" onclick="openPanel('ml')">
+  <div class="game-card" onclick="openPanel('ml', this)">
+
     <img src="https://i.imgur.com/0ZfYh8Q.png" class="game-logo">
     <div>Mobile Legends</div>
   </div>
 
-  <div class="game-card" onclick="openPanel('valo')">
+  <div class="game-card" onclick="openPanel('valo', this)">
     <img src="https://i.imgur.com/qG4E7P4.png" class="game-logo">
     <div>Valorant</div>
   </div>
 
-  <div class="game-card" onclick="openPanel('roblox')">
+  <div class="game-card" onclick="openPanel('roblox', this)">
     <img src="https://i.imgur.com/qPbUlCZ.png" class="game-logo">
     <div>Roblox</div>
   </div>
 
-  <div class="game-card" onclick="openPanel('genshin')">
+  <div class="game-card" onclick="openPanel('genshin', this)">
     <img src="https://i.imgur.com/0yH6jKm.png" class="game-logo">
     <div>Genshin Impact</div>
   </div>
@@ -218,9 +237,18 @@
 }
 
   function openPanel(id) {
-    document.getElementById('gameList').classList.add('hidden');
-    document.getElementById(id).classList.remove('hidden');
-  }
+  // remove selected from all cards
+  document.querySelectorAll('.game-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+
+  // add selected to clicked card
+  event.currentTarget.classList.add('selected');
+
+  document.getElementById('gameList').classList.add('hidden');
+  document.getElementById(id).classList.remove('hidden');
+}
+
 
   function goBack() {
     document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
