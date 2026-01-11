@@ -76,6 +76,7 @@
       color: white;
       font-weight: bold;
       transition: 0.2s;
+      width: 220px;
     }
     button:hover {
       background: #45a049;
@@ -93,111 +94,152 @@
   </style>
 </head>
 <body>
-  <header>Climb.gg<br><span style="font-size:14px;font-weight:400;opacity:0.8;">Fast • Secure • Trusted Piloting Services</span></header>
 
-  <div class="games" id="gameList">
-    <div class="game-card" onclick="openPanel('ml')">
-      <img src="https://i.imgur.com/0ZfYh8Q.png" class="game-logo">
-      <div>Mobile Legends</div>
-    </div>
+<header>
+  Climb.gg<br>
+  <span style="font-size:14px;font-weight:400;opacity:0.8;">Fast • Secure • Trusted Piloting Services</span>
+</header>
 
-    <div class="game-card" onclick="openPanel('valo')">
-      <img src="https://i.imgur.com/qG4E7P4.png" class="game-logo">
-      <div>Valorant</div>
-    </div>
-
-    <div class="game-card" onclick="openPanel('roblox')">
-      <img src="https://i.imgur.com/qPbUlCZ.png" class="game-logo">
-      <div>Roblox</div>
-    </div>
-
-    <div class="game-card" onclick="openPanel('genshin')">
-      <img src="https://i.imgur.com/0yH6jKm.png" class="game-logo">
-      <div>Genshin Impact</div>
-    </div>
+<div class="games" id="gameList">
+  <div class="game-card" onclick="openPanel('ml')">
+    <img src="https://i.imgur.com/0ZfYh8Q.png" class="game-logo">
+    <div>Mobile Legends</div>
   </div>
 
-  <!-- ML Panel -->
-  <div class="panel hidden" id="ml">
-    <h2>Mobile Legends Piloting</h2>
-    <label>Select Rank:</label><br>
-    <select id="mlRank" onchange="updatePrice('ml')">
-      <option value="100">Warrior</option>
-      <option value="150">Elite</option>
-      <option value="200">Master</option>
-      <option value="250">Grandmaster</option>
-      <option value="300">Epic</option>
-      <option value="350">Legend</option>
-      <option value="450">Mythic</option>
-      <option value="600">Mythical Glory</option>
-    </select>
-
-    <div class="price-box" id="mlPrice">Price: ₱100</div>
-
-    <button onclick="goBack()">Go Back</button>
+  <div class="game-card" onclick="openPanel('valo')">
+    <img src="https://i.imgur.com/qG4E7P4.png" class="game-logo">
+    <div>Valorant</div>
   </div>
 
-  <!-- Valorant Panel -->
-  <div class="panel hidden" id="valo">
-    <h2>Valorant Piloting</h2>
-    <label>Select Rank:</label><br>
-    <select id="valoRank" onchange="updatePrice('valo')">
-      <option value="120">Iron</option>
-      <option value="180">Bronze</option>
-      <option value="250">Silver</option>
-      <option value="320">Gold</option>
-      <option value="400">Platinum</option>
-      <option value="500">Diamond</option>
-      <option value="650">Ascendant</option>
-      <option value="800">Immortal</option>
-      <option value="1200">Radiant</option>
-    </select>
-
-    <div class="price-box" id="valoPrice">Price: ₱120</div>
-
-    <button onclick="goBack()">Go Back</button>
+  <div class="game-card" onclick="openPanel('roblox')">
+    <img src="https://i.imgur.com/qPbUlCZ.png" class="game-logo">
+    <div>Roblox</div>
   </div>
 
-  <!-- Roblox Panel -->
-  <div class="panel hidden" id="roblox">
-    <h2>Roblox Piloting</h2>
-    <p>Enter the game/level you want boosted:</p>
-    <input placeholder="Ex: Blox Fruits - LVL 1000" />
-
-    <button onclick="goBack()">Go Back</button>
+  <div class="game-card" onclick="openPanel('genshin')">
+    <img src="https://i.imgur.com/0yH6jKm.png" class="game-logo">
+    <div>Genshin Impact</div>
   </div>
+</div>
 
-  <!-- Genshin Panel -->
-  <div class="panel hidden" id="genshin">
-    <h2>Genshin Impact Piloting</h2>
-    <label>Select Service:</label>
-    <select id="genshinRank" onchange="updatePrice('genshin')">
-      <option value="150">Abyss Boosting</option>
-      <option value="120">Quest Clearing</option>
-      <option value="180">AR Leveling</option>
-    </select>
+<!-- ML Panel -->
+<div class="panel hidden" id="ml">
+  <h2>Mobile Legends Piloting</h2>
+  <label>Select Rank:</label><br>
+  <select id="mlRank" onchange="updatePrice('ml')">
+    <option value="100">Warrior</option>
+    <option value="150">Elite</option>
+    <option value="200">Master</option>
+    <option value="250">Grandmaster</option>
+    <option value="300">Epic</option>
+    <option value="350">Legend</option>
+    <option value="450">Mythic</option>
+    <option value="600">Mythical Glory</option>
+  </select>
 
-    <div class="price-box" id="genshinPrice">Price: ₱150</div>
+  <div class="price-box" id="mlPrice">Price: ₱100</div>
 
-    <button onclick="goBack()">Go Back</button>
-  </div>
+  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="goBack()">Go Back</button>
+</div>
 
-  <script>
-    function openPanel(id) {
+<!-- Valorant Panel -->
+<div class="panel hidden" id="valo">
+  <h2>Valorant Piloting</h2>
+  <label>Select Rank:</label><br>
+  <select id="valoRank" onchange="updatePrice('valo')">
+    <option value="120">Iron</option>
+    <option value="180">Bronze</option>
+    <option value="250">Silver</option>
+    <option value="320">Gold</option>
+    <option value="400">Platinum</option>
+    <option value="500">Diamond</option>
+    <option value="650">Ascendant</option>
+    <option value="800">Immortal</option>
+    <option value="1200">Radiant</option>
+  </select>
+
+  <div class="price-box" id="valoPrice">Price: ₱120</div>
+
+  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="goBack()">Go Back</button>
+</div>
+
+<!-- Roblox Panel -->
+<div class="panel hidden" id="roblox">
+  <h2>Roblox Piloting</h2>
+  <p>Enter the game/level you want boosted:</p>
+  <input placeholder="Ex: Blox Fruits - LVL 1000" /><br>
+
+  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="goBack()">Go Back</button>
+</div>
+
+<!-- Genshin Panel -->
+<div class="panel hidden" id="genshin">
+  <h2>Genshin Impact Piloting</h2>
+  <label>Select Service:</label><br>
+  <select id="genshinRank" onchange="updatePrice('genshin')">
+    <option value="150">Abyss Boosting</option>
+    <option value="120">Quest Clearing</option>
+    <option value="180">AR Leveling</option>
+  </select>
+
+  <div class="price-box" id="genshinPrice">Price: ₱150</div>
+
+  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="goBack()">Go Back</button>
+</div>
+
+<!-- Socials Panel -->
+<div class="panel hidden" id="socials">
+  <h2>Contact Climb.gg to Proceed</h2>
+  <p>Message us on any of our socials below to continue your order:</p>
+
+  <a href="https://facebook.com/YOURPAGE" target="_blank">
+    <button>Facebook</button>
+  </a><br>
+
+  <a href="https://discord.gg/YOURSERVER" target="_blank">
+    <button>Discord</button>
+  </a><br>
+
+  <a href="https://instagram.com/YOURPAGE" target="_blank">
+    <button>Instagram</button>
+  </a>
+</div>
+
+<script>
+  function openPanel(id) {
+    document.getElementById('gameList').classList.add('hidden');
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  function goBack() {
+    document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+    document.getElementById('gameList').classList.remove('hidden');
+  }
+
+  function updatePrice(game) {
+    const rankValue = document.getElementById(game + 'Rank').value;
+    const priceBox = document.getElementById(game + 'Price');
+    priceBox.innerHTML = `Price: ₱${rankValue}`;
+  }
+
+  function proceed() {
+    localStorage.setItem("showSocials", "yes");
+    location.reload();
+  }
+
+  window.onload = function() {
+    if (localStorage.getItem("showSocials") === "yes") {
       document.getElementById('gameList').classList.add('hidden');
-      document.getElementById(id).classList.remove('hidden');
-    }
-
-    function goBack() {
       document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
-      document.getElementById('gameList').classList.remove('hidden');
+      document.getElementById('socials').classList.remove('hidden');
+      localStorage.removeItem("showSocials");
     }
+  }
+</script>
 
-    function updatePrice(game) {
-      const rankValue = document.getElementById(game + 'Rank').value;
-      const priceBox = document.getElementById(game + 'Price');
-      priceBox.innerHTML = `Price: ₱${rankValue}`;
-    }
-  </script>
 </body>
 </html>
