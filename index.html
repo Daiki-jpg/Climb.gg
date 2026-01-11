@@ -7,8 +7,6 @@
 
   <style>
     body {
-      <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
-
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
       color: white;
@@ -173,7 +171,7 @@
 </div>
 
 <!-- VALORANT PANEL -->
-<div class="game-card" onclick="playClick(); openPanel('valo', this)">
+<div class="game-card" onclick="openPanel('valo', this)">
   <h2>Valorant Piloting</h2>
   <label>Select Rank:</label><br>
   <select id="valoRank" onchange="updatePrice('valo')">
@@ -195,7 +193,7 @@
 </div>
 
 <!-- ROBLOX PANEL -->
-<div class="game-card" onclick="playClick(); openPanel('roblox', this)">
+<div class="game-card" onclick="openPanel('roblox', this)">
   <h2>Roblox Piloting</h2>
   <p>Enter the game/level you want boosted:</p>
   <input placeholder="Ex: Blox Fruits - LVL 1000"><br>
@@ -206,7 +204,7 @@
 </div>
 
 <!-- GENSHIN PANEL -->
-<div class="game-card" onclick="playClick(); openPanel('genshin', this)">
+<div class="game-card" onclick="openPanel('genshin', this)">
   <h2>Genshin Impact Piloting</h2>
   <label>Select Service:</label><br>
   <select id="genshinRank" onchange="updatePrice('genshin')">
@@ -244,12 +242,6 @@
 
 <script>
   
-  function playClick() {
-  const sound = document.getElementById("clickSound");
-  sound.currentTime = 0;
-  sound.play();
-}
-
   function openPanel(id, element) {
     document.querySelectorAll('.game-card').forEach(card => {
       card.classList.remove('selected');
