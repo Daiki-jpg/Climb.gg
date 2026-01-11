@@ -7,6 +7,8 @@
 
   <style>
     body {
+      <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
       color: white;
@@ -149,7 +151,7 @@
 </div>
 
 <!-- MOBILE LEGENDS PANEL -->
-<div class="panel hidden" id="ml">
+<div class="game-card" onclick="openPanel('ml', this)">
   <h2>Mobile Legends Piloting</h2>
   <label>Select Rank:</label><br>
   <select id="mlRank" onchange="updatePrice('ml')">
@@ -165,12 +167,13 @@
 
   <div class="price-box" id="mlPrice">Price: ₱100</div>
 
-  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="playClick(); proceed()">Proceed</button>
+<br>
   <button onclick="goBack()">Go Back</button>
 </div>
 
 <!-- VALORANT PANEL -->
-<div class="panel hidden" id="valo">
+<div class="game-card" onclick="playClick(); openPanel('valo', this)">
   <h2>Valorant Piloting</h2>
   <label>Select Rank:</label><br>
   <select id="valoRank" onchange="updatePrice('valo')">
@@ -186,23 +189,24 @@
   </select>
 
   <div class="price-box" id="valoPrice">Price: ₱120</div>
-
-  <button onclick="proceed()">Proceed</button><br>
+<button onclick="playClick(); proceed()">Proceed</button>
+<br>
   <button onclick="goBack()">Go Back</button>
 </div>
 
 <!-- ROBLOX PANEL -->
-<div class="panel hidden" id="roblox">
+<div class="game-card" onclick="playClick(); openPanel('roblox', this)">
   <h2>Roblox Piloting</h2>
   <p>Enter the game/level you want boosted:</p>
   <input placeholder="Ex: Blox Fruits - LVL 1000"><br>
 
-  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="playClick(); proceed()">Proceed</button>
+<br>
   <button onclick="goBack()">Go Back</button>
 </div>
 
 <!-- GENSHIN PANEL -->
-<div class="panel hidden" id="genshin">
+<div class="game-card" onclick="playClick(); openPanel('genshin', this)">
   <h2>Genshin Impact Piloting</h2>
   <label>Select Service:</label><br>
   <select id="genshinRank" onchange="updatePrice('genshin')">
@@ -213,7 +217,8 @@
 
   <div class="price-box" id="genshinPrice">Price: ₱150</div>
 
-  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="playClick(); proceed()">Proceed</button>
+<br>
   <button onclick="goBack()">Go Back</button>
 </div>
 
@@ -222,15 +227,15 @@
   <h2>Contact Climb.gg to Proceed</h2>
   <p>Message us on any of our socials below to continue your order:</p>
 
-  <a href="https://facebook.com/YOURPAGE" target="_blank">
+  <a href="https://www.facebook.com/JazpherDave" target="_blank">
     <button>Facebook</button>
   </a><br>
 
-  <a href="https://discord.gg/YOURSERVER" target="_blank">
-    <button>Discord</button>
+  <a href="https://www.tiktok.com/@imdaikuku" target="_blank">
+    <button>TikTok</button>
   </a><br>
 
-  <a href="https://instagram.com/YOURPAGE" target="_blank">
+  <a href="https://www.instagram.com/_daikicantaim/?hl=en" target="_blank">
     <button>Instagram</button>
   </a><br><br>
 
@@ -238,6 +243,13 @@
 </div>
 
 <script>
+  
+  function playClick() {
+  const sound = document.getElementById("clickSound");
+  sound.currentTime = 0;
+  sound.play();
+}
+
   function openPanel(id, element) {
     document.querySelectorAll('.game-card').forEach(card => {
       card.classList.remove('selected');
