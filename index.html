@@ -133,9 +133,9 @@
     <div>Roblox</div>
   </div>
 
-  <div class="game-card" onclick="openPanel('genshin', this)">
-    <img src="images/genshin.png" alt="Genshin Impact Logo" class="game-logo">
-    <div>Genshin Impact</div>
+  <div class="game-card" onclick="openPanel('CODM', this)">
+    <img src="images/CODM LOGO.png" alt="CODM Impact Logo" class="game-logo">
+    <div>CODM Impact</div>
   </div>
 </div>
 
@@ -193,17 +193,17 @@
   <button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Genshin Panel -->
-<div class="panel hidden" id="genshin">
-  <h2>Genshin Impact Piloting</h2>
+<!-- CODM Panel -->
+<div class="panel hidden" id="CODM">
+  <h2>CODM Impact Piloting</h2>
   <label>Select Service:</label><br>
-  <select id="genshinRank" onchange="updatePrice('genshin')">
+  <select id="CODMRank" onchange="updatePrice('CODM')">
     <option value="150">Abyss Boosting</option>
     <option value="120">Quest Clearing</option>
     <option value="180">AR Leveling</option>
   </select>
 
-  <div class="price-box" id="genshinPrice">Price: ₱150</div>
+  <div class="price-box" id="CODMPrice">Price: ₱150</div>
 
   <button onclick="proceed()">Proceed</button><br>
   <button onclick="goBack()">Go Back</button>
