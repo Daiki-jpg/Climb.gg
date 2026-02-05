@@ -134,8 +134,8 @@
   </div>
 
   <div class="game-card" onclick="openPanel('CODM', this)">
-    <img src="images/CODM LOGO.png" alt="CODM Impact Logo" class="game-logo">
-    <div>CODM Impact</div>
+    <img src="images/CODM.png" alt="CODM Logo" class="game-logo">
+    <div>CODM</div>
   </div>
 </div>
 
@@ -195,12 +195,19 @@
 
 <!-- CODM Panel -->
 <div class="panel hidden" id="CODM">
-  <h2>CODM Impact Piloting</h2>
+  <h2>CODM Piloting</h2>
   <label>Select Service:</label><br>
   <select id="CODMRank" onchange="updatePrice('CODM')">
-    <option value="150">Abyss Boosting</option>
-    <option value="120">Quest Clearing</option>
-    <option value="180">AR Leveling</option>
+    <option value="120">MP Rookie - MP Veteran </option>
+    <option value="180">MP Veteran - MP Elite</option>
+    <option value="250">MP Elite - MP Master </option>
+    <option value="320">MP Master - MP Grandmaster</option>
+    <option value="400">MP Grandmaster - MP Legendary</option>
+    <option value="120">BR Rookie - BR Veteran </option>
+    <option value="180">BR Veteran - BR Elite</option>
+    <option value="250">BR Elite - BR Master </option>
+    <option value="320">BR Master - BR Grandmaster</option>
+    <option value="400">BR Grandmaster - BR Legendary</option>
   </select>
 
   <div class="price-box" id="CODMPrice">Price: ₱150</div>
