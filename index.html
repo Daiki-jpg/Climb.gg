@@ -206,17 +206,15 @@ Fast • Secure • Trusted Piloting Services
 </div>
 
 <script>
-let selectedGame = null;
-let selectedService = null;
-let selectedPrice = null;
+let selectedGame = "";
+let selectedService = "";
+let selectedPrice = "";
 
-/* hide everything */
 function hideAll() {
   document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
   document.getElementById('gameList').classList.add('hidden');
 }
 
-/* open game panel */
 function openPanel(id, card) {
   selectedGame = id;
 
@@ -227,13 +225,11 @@ function openPanel(id, card) {
   document.getElementById(id).classList.remove('hidden');
 }
 
-/* go back to games */
 function goBack() {
   hideAll();
   document.getElementById('gameList').classList.remove('hidden');
 }
 
-/* update price */
 function updatePrice(game) {
   const select = document.getElementById(game + 'Rank');
   if (!select) return;
@@ -250,9 +246,7 @@ function updatePrice(game) {
   }
 }
 
-/* proceed to summary */
 function proceed() {
-
   if (selectedGame === "roblox") {
     selectedService = document.getElementById("robloxInput").value || "Custom request";
     selectedPrice = "Negotiable";
@@ -272,7 +266,6 @@ function proceed() {
     selectedPrice === "Negotiable" ? "Negotiable" : "₱" + selectedPrice;
 }
 
-/* send to facebook */
 function sendOrder() {
   let message =
 `Hello Climb.gg!
@@ -283,10 +276,10 @@ Service: ${selectedService}
 Price: ${selectedPrice}`;
 
   const facebookLink = "https://m.me/61587512906964";
-
   window.open(facebookLink + "?text=" + encodeURIComponent(message), "_blank");
 }
 </script>
+
 
 
 
