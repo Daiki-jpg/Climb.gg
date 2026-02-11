@@ -214,13 +214,18 @@ function openPanel(id, card) {
   selectedGame = id;
 
   document.querySelectorAll('.game-card').forEach(c => c.classList.remove('selected'));
-  card.classList.add('selected');
+  if(card) card.classList.add('selected');
 
+  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
   document.getElementById('gameList').classList.add('hidden');
   document.getElementById(id).classList.remove('hidden');
 }
 
 function goBack() {
+  // reset selections
+  selectedService = "";
+  selectedPrice = "";
+
   document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
   document.getElementById('gameList').classList.remove('hidden');
 }
@@ -228,6 +233,8 @@ function goBack() {
 function updatePrice(game) {
   const select = document.getElementById(game + 'Rank');
   const priceBox = document.getElementById(game + 'Price');
+
+  if (!select) return;
 
   selectedService = select.options[select.selectedIndex].text;
   selectedPrice = select.value;
@@ -252,8 +259,8 @@ function proceed() {
   }
 
   document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
-
   document.getElementById("summary").classList.remove('hidden');
+
   document.getElementById("sumGame").innerText = selectedGame.toUpperCase();
   document.getElementById("sumService").innerText = selectedService;
   document.getElementById("sumPrice").innerText =
@@ -270,10 +277,10 @@ Service: ${selectedService}
 Price: ${selectedPrice}`;
 
   const facebookLink = "https://m.me/61587512906964";
-
   window.open(facebookLink + "?text=" + encodeURIComponent(message), "_blank");
 }
 </script>
+
 
 </body>
 </html>
