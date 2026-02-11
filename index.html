@@ -206,38 +206,42 @@ Fast • Secure • Trusted Piloting Services
 </div>
 
 <script>
-let selectedGame = "";
-let selectedService = "";
-let selectedPrice = "";
+let selectedGame = null;
+let selectedService = null;
+let selectedPrice = null;
 
+/* hide everything */
+function hideAll() {
+  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+  document.getElementById('gameList').classList.add('hidden');
+}
+
+/* open game panel */
 function openPanel(id, card) {
   selectedGame = id;
 
   document.querySelectorAll('.game-card').forEach(c => c.classList.remove('selected'));
-  if(card) card.classList.add('selected');
+  if (card) card.classList.add('selected');
 
-  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
-  document.getElementById('gameList').classList.add('hidden');
+  hideAll();
   document.getElementById(id).classList.remove('hidden');
 }
 
+/* go back to games */
 function goBack() {
-  // reset selections
-  selectedService = "";
-  selectedPrice = "";
-
-  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+  hideAll();
   document.getElementById('gameList').classList.remove('hidden');
 }
 
+/* update price */
 function updatePrice(game) {
   const select = document.getElementById(game + 'Rank');
-  const priceBox = document.getElementById(game + 'Price');
-
   if (!select) return;
 
   selectedService = select.options[select.selectedIndex].text;
   selectedPrice = select.value;
+
+  const priceBox = document.getElementById(game + 'Price');
 
   if (selectedPrice === "Negotiable") {
     priceBox.innerHTML = "Price: Negotiable";
@@ -246,6 +250,7 @@ function updatePrice(game) {
   }
 }
 
+/* proceed to summary */
 function proceed() {
 
   if (selectedGame === "roblox") {
@@ -258,7 +263,7 @@ function proceed() {
     return;
   }
 
-  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+  hideAll();
   document.getElementById("summary").classList.remove('hidden');
 
   document.getElementById("sumGame").innerText = selectedGame.toUpperCase();
@@ -267,6 +272,7 @@ function proceed() {
     selectedPrice === "Negotiable" ? "Negotiable" : "₱" + selectedPrice;
 }
 
+/* send to facebook */
 function sendOrder() {
   let message =
 `Hello Climb.gg!
@@ -277,9 +283,11 @@ Service: ${selectedService}
 Price: ${selectedPrice}`;
 
   const facebookLink = "https://m.me/61587512906964";
+
   window.open(facebookLink + "?text=" + encodeURIComponent(message), "_blank");
 }
 </script>
+
 
 
 </body>
