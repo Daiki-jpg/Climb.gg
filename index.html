@@ -201,7 +201,12 @@ Fast • Secure • Trusted Piloting Services
   <p><b>Price:</b> <span id="sumPrice"></span></p>
 </div>
 
-<button onclick="sendOrder()">Send Order</button><br>
+<p><b>Choose platform:</b></p>
+
+<button onclick="sendOrder('facebook')">Facebook</button><br>
+<button onclick="sendOrder('instagram')">Instagram</button><br>
+<button onclick="sendOrder('tiktok')">TikTok</button><br>
+
 <button onclick="goBack()">Cancel</button>
 </div>
 
@@ -266,7 +271,7 @@ function proceed() {
     selectedPrice === "Negotiable" ? "Negotiable" : "₱" + selectedPrice;
 }
 
-function sendOrder() {
+function sendOrder(platform) {
   let message =
 `Hello Climb.gg!
 I want to place an order.
@@ -275,9 +280,24 @@ Game: ${selectedGame.toUpperCase()}
 Service: ${selectedService}
 Price: ${selectedPrice}`;
 
-  const facebookLink = "https://m.me/61587512906964";
-  window.open(facebookLink + "?text=" + encodeURIComponent(message), "_blank");
+  let link = "";
+
+  if (platform === "facebook") {
+    link = "https://www.facebook.com/profile.php?id=61587512906964";
+    window.open(link + "?text=" + encodeURIComponent(message), "_blank");
+  }
+
+  else if (platform === "instagram") {
+    link = "https://www.instagram.com/_daikicantaim/";
+    window.open(link, "_blank");
+  }
+
+  else if (platform === "tiktok") {
+    link = "https://www.tiktok.com/@imdaikuku";
+    window.open(link, "_blank");
+  }
 }
+
 </script>
 
 
