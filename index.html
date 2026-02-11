@@ -40,8 +40,6 @@ header {
   transition: 0.25s;
   border: 1px solid #333;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  position: relative;
-  overflow: hidden;
   animation: pulse 3s infinite;
 }
 
@@ -151,18 +149,38 @@ button:hover { background: #45a049; }
 
 </div>
 
-<!-- ML PANEL -->
+<!-- MOBILE LEGENDS -->
 <div class="panel hidden" id="ml">
   <h2>Mobile Legends Piloting</h2>
 
   <label>Select Rank:</label><br>
   <select id="mlRank" onchange="updatePrice('ml')">
-    <option value="40">Warrior - Elite</option>
-    <option value="50">Master - Grandmaster</option>
-    <option value="75">Grandmaster - Epic</option>
-    <option value="85">Epic - Legend</option>
-    <option value="150">Legend - Mythic</option>
-    <option value="Negotiable">Mythic 10★+</option>
+    <option value="40">Warrior 3 - Warrior 2</option>
+    <option value="40">Warrior 2 - Warrior 1</option>
+    <option value="40">Warrior 1 - Elite 3</option>
+    <option value="40">Elite 3 = Elite 2</option>
+    <option value="40">Elite 2 = Elite 1</option>
+    <option value="40">Elite 1 = Master 4</option>
+    <option value="50">Master 4 - Master 3</option>
+    <option value="50">Master 3 - Master 2</option>
+    <option value="50">Master 2 - Master 1</option>
+    <option value="50">Master 1 - Grandmaster 5</option>
+    <option value="50">Grandmaster 5 - Grandmaster 4</option>
+    <option value="50">Grandmaster 4 - Grandmaster 3</option>
+    <option value="50">Grandmaster 3 - Grandmaster 2</option>
+    <option value="50">Grandmaster 2 - Grandmaster 1</option>
+    <option value="75">Grandmaster 1 - Epic 5</option>
+    <option value="75">Epic 5 - Epic 4</option>
+    <option value="75">Epic 4 - Epic 3</option>
+    <option value="80">Epic 3 - Epic 2</option>
+    <option value="80">Epic 2 - Epic 1</option>
+    <option value="85">Epic 1 - Legend 5</option>
+    <option value="85">Legend 5 - Legend 4</option>
+    <option value="90">Legend 4 - Legend 3</option>
+    <option value="90">Legend 3 - Legend 2</option>
+    <option value="90">Legend 2 - Legend 1</option>
+    <option value="150">Legend 1 - Mythic</option>
+    <option value="Negotiable">Mythic 10 ★ - Mythic 10 ★+</option>
   </select>
 
   <div class="price-box" id="mlPrice">Price: ₱---</div>
@@ -171,15 +189,24 @@ button:hover { background: #45a049; }
   <button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- VALO PANEL -->
+<!-- VALORANT -->
 <div class="panel hidden" id="valo">
   <h2>Valorant Piloting</h2>
 
   <label>Select Rank:</label><br>
   <select id="valoRank" onchange="updatePrice('valo')">
-    <option value="30">Iron - Bronze</option>
-    <option value="50">Bronze - Silver</option>
-    <option value="70">Silver - Gold</option>
+    <option value="30">Iron 1 - Iron 2</option>
+    <option value="30">Iron 2 - Iron 3</option>
+    <option value="30">Iron 3 - Bronze 1</option>
+    <option value="50">Bronze 1 - Bronze 2</option>
+    <option value="50">Bronze 2 - Bronze 3</option>
+    <option value="50">Bronze 3 - Silver 1</option>
+    <option value="50">Silver 1 - Silver 2</option>
+    <option value="50">Silver 2 - Silver 3</option>
+    <option value="50">Silver 3 - Gold 1</option>
+    <option value="50">Gold 3 - Gold 2</option>
+    <option value="50">Gold 2 - Gold 1</option>
+    <option value="50">Gold 1 - Platinum 1</option>
   </select>
 
   <div class="price-box" id="valoPrice">Price: ₱---</div>
@@ -188,10 +215,47 @@ button:hover { background: #45a049; }
   <button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- SOCIALS PANEL -->
+<!-- ROBLOX -->
+<div class="panel hidden" id="roblox">
+  <h2>Roblox Piloting</h2>
+
+  <p>Enter the game/level you want boosted:</p>
+  <input placeholder="Ex: Blox Fruits - LVL 1000" /><br>
+
+  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="goBack()">Go Back</button>
+</div>
+
+<!-- CODM -->
+<div class="panel hidden" id="CODM">
+  <h2>CODM Piloting</h2>
+
+  <label>Select Service:</label><br>
+  <select id="CODMRank" onchange="updatePrice('CODM')">
+    <option value="50">MP Rookie - MP Veteran </option>
+    <option value="60">MP Veteran - MP Elite</option>
+    <option value="70">MP Elite - MP Pro </option>
+    <option value="85">MP Pro - MP Master</option>
+    <option value="85">MP Master - MP Grandmaster</option>
+    <option value="100">MP Grandmaster - MP Legendary</option>
+    <option value="50">BR Rookie - BR Veteran </option>
+    <option value="60">BR Veteran - BR Elite</option>
+    <option value="70">BR Elite - BR Pro </option>
+    <option value="85">BR Pro - BR Master</option>
+    <option value="85">BR Master - BR Grandmaster</option>
+    <option value="100">BR Grandmaster - BR Legendary</option>
+  </select>
+
+  <div class="price-box" id="CODMPrice">Price: ₱---</div>
+
+  <button onclick="proceed()">Proceed</button><br>
+  <button onclick="goBack()">Go Back</button>
+</div>
+
+<!-- SOCIALS -->
 <div class="panel hidden" id="socials">
   <h2>Contact Climb.gg to Proceed</h2>
-  <p>Message us on any platform:</p>
+  <p>Message us on any platform below:</p>
 
   <a href="https://www.facebook.com/profile.php?id=61587512906964" target="_blank">
     <button>Facebook</button>
@@ -211,7 +275,6 @@ button:hover { background: #45a049; }
 </div>
 
 <script>
-
 function openPanel(id, element) {
   document.querySelectorAll('.game-card').forEach(card => {
     card.classList.remove('selected');
@@ -231,6 +294,8 @@ function goBack() {
 function updatePrice(game) {
   const rankValue = document.getElementById(game + 'Rank').value;
   const priceBox = document.getElementById(game + 'Price');
+
+  if (!priceBox) return;
 
   if (rankValue === "Negotiable") {
     priceBox.innerHTML = "Price: Negotiable";
@@ -256,7 +321,6 @@ window.onload = function() {
     localStorage.removeItem("showSocials");
   }
 };
-
 </script>
 
 </body>
