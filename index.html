@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Climb.gg — Piloting Services</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      padding: 25px;
-      background: #111;
-      text-align: center;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-    }
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      padding: 30px;
-    }
-    .game-card {
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Climb.gg — Piloting Services</title>
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: white;
+  margin: 0;
+}
+
+header {
+  padding: 25px;
+  background: #111;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 30px;
+}
+
+.game-card {
   background: #1f1f1f;
   padding: 25px;
   border-radius: 15px;
@@ -35,274 +36,243 @@
   cursor: pointer;
   transition: 0.25s;
   border: 1px solid #333;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  position: relative;
-  overflow: hidden;
-  animation: pulse 3s infinite;
 }
 
 .game-card:hover {
-  transform: scale(1.07);
-  background: #2b2b2b;
+  transform: scale(1.05);
   border-color: #4caf50;
-  box-shadow: 0 0 15px #4caf50, 0 0 30px rgba(76,175,80,0.5);
 }
 
-/* Selected card */
 .game-card.selected {
   border-color: #4caf50;
-  box-shadow: 0 0 20px #4caf50, 0 0 40px rgba(76,175,80,0.6);
+  box-shadow: 0 0 15px #4caf50;
 }
 
-/* Pulse animation */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
+.game-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
 }
-    .game-logo {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 10px;
-      border-radius: 12px;
-    }
-    .hidden { display: none; }
 
-    .panel {
-      padding: 30px;
-      animation: fade 0.3s ease-in-out;
-    }
-    @keyframes fade { from{opacity:0;} to{opacity:1;} }
+.hidden { display: none; }
 
-    select, input, button {
-      padding: 12px;
-      margin-top: 15px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+.panel {
+  padding: 30px;
+}
 
-    select, input {
-      width: 250px;
-      background: #2a2a2a;
-      color: white;
-    }
+select, input, button {
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
 
-    button {
-      cursor: pointer;
-      background: #4caf50;
-      color: white;
-      font-weight: bold;
-      transition: 0.2s;
-      width: 220px;
-    }
-    button:hover {
-      background: #45a049;
-    }
+select, input {
+  width: 260px;
+  background: #2a2a2a;
+  color: white;
+}
 
-    .price-box {
-      background: #161616;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 10px;
-      border: 1px solid #333;
-      width: 300px;
-    }
+button {
+  cursor: pointer;
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+  width: 220px;
+}
 
-  </style>
+button:hover { background: #45a049; }
+
+.price-box {
+  background: #161616;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  width: 260px;
+}
+</style>
 </head>
+
 <body>
+
 <header>
-  Climb.gg<br>
-  <span style="font-size:14px;font-weight:400;opacity:0.8;">Fast • Secure • Trusted Piloting Services</span>
+Climb.gg<br>
+<span style="font-size:14px;font-weight:400;opacity:0.8;">
+Fast • Secure • Trusted Piloting Services
+</span>
 </header>
 
+<!-- GAME LIST -->
 <div class="games" id="gameList">
+
   <div class="game-card" onclick="openPanel('ml', this)">
-    <img src="images/ml.png" alt="Mobile Legends Logo" class="game-logo">
+    <img src="images/ml.png" class="game-logo">
     <div>Mobile Legends</div>
   </div>
 
   <div class="game-card" onclick="openPanel('valo', this)">
-    <img src="images/valo.png" alt="Valorant Logo" class="game-logo">
+    <img src="images/valo.png" class="game-logo">
     <div>Valorant</div>
   </div>
 
   <div class="game-card" onclick="openPanel('roblox', this)">
-    <img src="images/roblox.png" alt="Roblox Logo" class="game-logo">
+    <img src="images/roblox.png" class="game-logo">
     <div>Roblox</div>
   </div>
 
   <div class="game-card" onclick="openPanel('CODM', this)">
-    <img src="images/CODM.png" alt="CODM Logo" class="game-logo">
+    <img src="images/CODM.png" class="game-logo">
     <div>CODM</div>
   </div>
+
 </div>
 
-
-<!-- ML Panel -->
+<!-- ================= MOBILE LEGENDS ================= -->
 <div class="panel hidden" id="ml">
-  <h2>Mobile Legends Piloting</h2>
-  <label>Select Rank:</label><br>
-  <select id="mlRank" onchange="updatePrice('ml')">
-    <option value="40">Warrior 3 - Warrior 2</option>
-    <option value="40">Warrior 2 - Warrior 1</option>
-    <option value="40">Warrior 1 - Elite 3</option>
-    <option value="40">Elite 3 = Elite 2</option>
-    <option value="40">Elite 2 = Elite 1</option>
-    <option value="40">Elite 1 = Master 4</option>
-    <option value="50">Master 4 - Master 3</option>
-    <option value="50">Master 3 - Master 2</option>
-    <option value="50">Master 2 - Master 1</option>
-    <option value="50">Master 1 - Grandmaster 5</option>
-    <option value="50">Grandmaster 5 - Grandmaster 4</option>
-    <option value="50">Grandmaster 4 - Grandmaster 3</option>
-    <option value="50">Grandmaster 3 - Grandmaster 2</option>
-    <option value="50">Grandmaster 2 - Grandmaster 1</option>
-    <option value="75">Grandmaster 1 - Epic 5</option>
-    <option value="75">Epic 5 - Epic 4</option>
-    <option value="75">Epic 4 - Epic 3</option>
-    <option value="80">Epic 3 - Epic 2</option>
-    <option value="80">Epic 2 - Epic 1</option>
-    <option value="85">Epic 1 - Legend 5</option>
-    <option value="85">Legend 5 - Legend 4</option>
-    <option value="90">Legend 4 - Legend 3</option>
-    <option value="90">Legend 3 - Legend 2</option>
-    <option value="90">Legend 2 - Legend 1</option>
-    <option value="150">Legend 1 - Mythic</option>
-    <option value="Negotiable">Mythic 10 ★ - Mythic 10 ★+</option>
-  </select>
+<h2>Mobile Legends</h2>
 
-  <div class="price-box" id="mlPrice">Price: ₱~~~</div>
+<select id="mlRank" onchange="updatePrice('ml')">
+  <option disabled selected>Select service</option>
+  <option value="80">Epic 3 - Epic 2</option>
+  <option value="80">Epic 2 - Epic 1</option>
+  <option value="150">Legend 1 - Mythic</option>
+  <option value="Negotiable">Mythic Stars</option>
+</select>
 
-  <button onclick="proceed()">Proceed</button><br>
-  <button onclick="goBack()">Go Back</button>
+<div class="price-box" id="mlPrice">Price: ₱---</div>
+
+<button onclick="proceed()">Proceed</button><br>
+<button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Valorant Panel -->
+<!-- ================= VALORANT ================= -->
 <div class="panel hidden" id="valo">
-  <h2>Valorant Piloting</h2>
-  <label>Select Rank:</label><br>
-  <select id="valoRank" onchange="updatePrice('valo')">
-    <option value="30">Iron 1 - Iron 2</option>
-    <option value="30">Iron 2 - Iron 3</option>
-    <option value="30">Iron 3 - Bronze 1</option>
-    <option value="50">Bronze 1 - Bronze 2</option>
-    <option value="50">Bronze 2 - Bronze 3</option>
-    <option value="50">Bronze 3 - Silver 1</option>
-    <option value="50">Silver 1 - Silver 2</option>
-    <option value="50">Silver 2 - Silver 3</option>
-    <option value="50">Silver 3 - Gold 1</option>
-    <option value="50">Gold 3 - Gold 2</option>
-    <option value="50">Gold 2 - Gold 1</option>
-    <option value="50">Gold 1 - Platinum 1</option>
-  </select>
+<h2>Valorant</h2>
 
-  <div class="price-box" id="valoPrice">Price: ₱~~~</div>
+<select id="valoRank" onchange="updatePrice('valo')">
+  <option disabled selected>Select service</option>
+  <option value="30">Iron - Bronze</option>
+  <option value="50">Bronze - Silver</option>
+</select>
 
-  <button onclick="proceed()">Proceed</button><br>
-  <button onclick="goBack()">Go Back</button>
+<div class="price-box" id="valoPrice">Price: ₱---</div>
+
+<button onclick="proceed()">Proceed</button><br>
+<button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Roblox Panel -->
+<!-- ================= ROBLOX ================= -->
 <div class="panel hidden" id="roblox">
-  <h2>Roblox Piloting</h2>
-  <p>Enter the game/level you want boosted:</p>
-  <input placeholder="Ex: Blox Fruits - LVL 1000" /><br>
+<h2>Roblox</h2>
 
-  <button onclick="proceed()">Proceed</button><br>
-  <button onclick="goBack()">Go Back</button>
+<input id="robloxInput" placeholder="Ex: Blox Fruits Lvl 1000">
+
+<div class="price-box">Price: Negotiable</div>
+
+<button onclick="proceed()">Proceed</button><br>
+<button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- CODM Panel -->
+<!-- ================= CODM ================= -->
 <div class="panel hidden" id="CODM">
-  <h2>CODM Piloting</h2>
-  <label>Select Service:</label><br>
-  <select id="CODMRank" onchange="updatePrice('CODM')">
-    <option value="50">MP Rookie - MP Veteran </option>
-    <option value="60">MP Veteran - MP Elite</option>
-    <option value="70">MP Elite - MP Pro </option>
-    <option value="85">MP Pro - MP Master</option>
-    <option value="85">MP Master - MP Grandmaster</option>
-    <option value="100">MP Grandmaster - MP Legendary</option>
-    <option value="50">BR Rookie - BR Veteran </option>
-    <option value="60">BR Veteran - BR Elite</option>
-    <option value="70">BR Elite - BR Pro </option>
-    <option value="85">BR Pro - BR Master</option>
-    <option value="85">BR Master - BR Grandmaster</option>
-    <option value="100">BR Grandmaster - BR Legendary</option>
-  </select>
+<h2>CODM</h2>
 
-  <div class="price-box" id="CODMPrice">Price: ₱~~~</div>
+<select id="CODMRank" onchange="updatePrice('CODM')">
+  <option disabled selected>Select service</option>
+  <option value="70">Elite - Pro</option>
+  <option value="100">Grandmaster - Legendary</option>
+</select>
 
-  <button onclick="proceed()">Proceed</button><br>
-  <button onclick="goBack()">Go Back</button>
+<div class="price-box" id="CODMPrice">Price: ₱---</div>
+
+<button onclick="proceed()">Proceed</button><br>
+<button onclick="goBack()">Go Back</button>
 </div>
 
-<!-- Socials Panel -->
-<div class="panel hidden" id="socials">
-  <h2>Contact Climb.gg to Proceed</h2>
-  <p>Message us on any of our socials below to continue your order:</p>
+<!-- ================= ORDER SUMMARY ================= -->
+<div class="panel hidden" id="summary">
+<h2>Order Summary</h2>
 
-  <a href="https://www.facebook.com/profile.php?id=61587512906964" target="_blank">
-    <button>Facebook</button>
-  </a><br>
+<div class="price-box">
+  <p><b>Game:</b> <span id="sumGame"></span></p>
+  <p><b>Service:</b> <span id="sumService"></span></p>
+  <p><b>Price:</b> <span id="sumPrice"></span></p>
+</div>
 
-  <a href="https://www.tiktok.com/@imdaikuku" target="_blank">
-    <button>TikTok</button>
-  </a><br>
-
-  <a href="https://www.instagram.com/_daikicantaim/?hl=en" target="_blank">
-    <button>Instagram</button>
-  </a><br><br>
-
-  <button onclick="returnToOffers()" style="background:#333;">⬅ Return to Offers</button>
+<button onclick="sendOrder()">Send Order</button><br>
+<button onclick="goBack()">Cancel</button>
 </div>
 
 <script>
-  function returnToOffers() {
-  document.getElementById('socials').classList.add('hidden');
-  document.getElementById('gameList').classList.remove('hidden');
-}
+let selectedGame = "";
+let selectedService = "";
+let selectedPrice = "";
 
-  function openPanel(id) {
-  // remove selected from all cards
-  document.querySelectorAll('.game-card').forEach(card => {
-    card.classList.remove('selected');
-  });
+function openPanel(id, card) {
+  selectedGame = id;
 
-  // add selected to clicked card
-  event.currentTarget.classList.add('selected');
+  document.querySelectorAll('.game-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
 
   document.getElementById('gameList').classList.add('hidden');
   document.getElementById(id).classList.remove('hidden');
 }
 
+function goBack() {
+  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+  document.getElementById('gameList').classList.remove('hidden');
+}
 
-  function goBack() {
-    document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
-    document.getElementById('gameList').classList.remove('hidden');
+function updatePrice(game) {
+  const select = document.getElementById(game + 'Rank');
+  const priceBox = document.getElementById(game + 'Price');
+
+  selectedService = select.options[select.selectedIndex].text;
+  selectedPrice = select.value;
+
+  if (selectedPrice === "Negotiable") {
+    priceBox.innerHTML = "Price: Negotiable";
+  } else {
+    priceBox.innerHTML = `Price: ₱${selectedPrice}`;
+  }
+}
+
+function proceed() {
+
+  if (selectedGame === "roblox") {
+    selectedService = document.getElementById("robloxInput").value || "Custom request";
+    selectedPrice = "Negotiable";
   }
 
-  function updatePrice(game) {
-    const rankValue = document.getElementById(game + 'Rank').value;
-    const priceBox = document.getElementById(game + 'Price');
-    priceBox.innerHTML = `Price: ₱${rankValue}`;
+  if (!selectedService) {
+    alert("Please select a service first.");
+    return;
   }
 
-  function proceed() {
-    localStorage.setItem("showSocials", "yes");
-    location.reload();
-  }
+  document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
 
-  window.onload = function() {
-    if (localStorage.getItem("showSocials") === "yes") {
-      document.getElementById('gameList').classList.add('hidden');
-      document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
-      document.getElementById('socials').classList.remove('hidden');
-      localStorage.removeItem("showSocials");
-    }
-  }
+  document.getElementById("summary").classList.remove('hidden');
+  document.getElementById("sumGame").innerText = selectedGame.toUpperCase();
+  document.getElementById("sumService").innerText = selectedService;
+  document.getElementById("sumPrice").innerText =
+    selectedPrice === "Negotiable" ? "Negotiable" : "₱" + selectedPrice;
+}
+
+function sendOrder() {
+  let message =
+`Hello Climb.gg!
+I want to place an order.
+
+Game: ${selectedGame.toUpperCase()}
+Service: ${selectedService}
+Price: ${selectedPrice}`;
+
+  const facebookLink = "https://m.me/61587512906964";
+
+  window.open(facebookLink + "?text=" + encodeURIComponent(message), "_blank");
+}
 </script>
 
 </body>
